@@ -1,13 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { ProductService } from './app.service';
+import { ProductService } from '../app.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css']
 })
-export class AppComponent {
+export class DashboardComponent implements OnInit {
+
     title='CRUD operation using firebase';
     sub: Subscription;
     products: any=[];
@@ -18,7 +19,6 @@ export class AppComponent {
     ngOnInit() {
         this.getProducts();
     }
-    
     onAddProductSubmit() {
         if (this.editFlag==false) {
             this.productService.addProduct(this.product).then((data: any) => {
@@ -72,4 +72,5 @@ export class AppComponent {
         });
 
     }
+
 }
