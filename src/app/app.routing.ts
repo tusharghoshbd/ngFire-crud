@@ -7,14 +7,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
-    { 
-        path: '', 
-        component: AppComponent,
-        children: [
-            { path: '', component:DashboardComponent },
-            { path: 'sign-in', component:SignInComponent } 
-        ]
-    },
+    { path: '', component: DashboardComponent },
+    { path: 'sign-in', component:SignInComponent },
     { path: '**', component: NotFoundComponent }
 ];
 

@@ -12,11 +12,12 @@ import { environment } from '../environments/environment';
 import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
-import { ProductService } from './app.service';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
+import { ProductService } from './app.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
         AngularFireDatabaseModule,
         AngularFireAuthModule
     ],
-    providers: [ProductService],
+    providers: [ProductService, AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
