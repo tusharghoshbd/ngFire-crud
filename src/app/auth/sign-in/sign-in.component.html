@@ -11,9 +11,11 @@
             <input type="password" [(ngModel)]="password" name="userPassword" class="form-control" id="exampleInputPassword1"
                 placeholder="Password" required />
         </div>
-        <button type="submit" class="btn btn-primary" (click)="signIn()">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="signIn()">Sign in</button>
     </form>
+    <!-- <hr/>
+    <button type="button" class="btn btn-primary" (click)="signInWith()">Sign in with Google</button>
     <div *ngIf="auth.user | async as user;">
         <h1>Hello {{ user.displayName }}!</h1>
-      </div>
+      </div> -->
 </div>

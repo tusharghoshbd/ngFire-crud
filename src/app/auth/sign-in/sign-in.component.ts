@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../core/auth.service';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { auth } from 'firebase/app';
 
@@ -20,12 +20,11 @@ export class SignInComponent implements OnInit {
     ngOnInit(): void {}
 
     signIn() {
-        // this.authService.signIn(this.email, this.password).then((user: any) => {
+        this.authService.signIn(this.email, this.password)
 
-        // }, err => {
-        //     console.log(err);
-        // });
-
+        // this.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    }
+    signInWith() { 
         this.auth.signInWithPopup(new auth.GoogleAuthProvider());
     }
 

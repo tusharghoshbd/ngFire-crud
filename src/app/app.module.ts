@@ -16,8 +16,9 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-import { ProductService } from './app.service';
-import { AuthService } from './auth.service';
+import { ProductService } from './core/app.service';
+import { AuthService } from './core/auth.service';
+import { AuthGuardService } from './core/auth-guard.service';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,7 @@ import { AuthService } from './auth.service';
         AngularFireDatabaseModule,
         AngularFireAuthModule
     ],
-    providers: [ProductService, AuthService],
+    providers: [ProductService, AuthService, AuthGuardService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

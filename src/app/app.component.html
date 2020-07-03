@@ -10,9 +10,11 @@
                 <a class="navbar-brand" href="#">NgxCharts</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a  routerLink="/" routerLinkActive="horizontal-active-link" >Home</a></li>
-                    <li><a  routerLink="/sign-in" routerLinkActive="horizontal-active-link">Sign in</a></li>
+                <ul class="nav navbar-nav"> 
+                    
+                    <li><a  routerLink="/" *ngIf="isLogin=='true'" routerLinkActive="horizontal-active-link" >Home</a></li>
+                    <li><a  routerLink="/sign-in" *ngIf="isLogin!='true'" routerLinkActive="horizontal-active-link">Sign in</a></li>
+                    
                     <!-- <li [class.active]="navBarShow.bar" ><a href="#" (click)="clickMenuShow('bar')">Bar</a></li>
                         <li [class.active]="navBarShow.stacked" ><a href="#" (click)="clickMenuShow('stacked')">Stacked</a></li>
                         <li [class.active]="navBarShow.pie"><a href="#" (click)="clickMenuShow('pie')">Pie</a></li>
