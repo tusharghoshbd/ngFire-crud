@@ -7,10 +7,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable()
 export class ProductService {
    
-    constructor(public http: HttpClient, private fireStore: AngularFirestore) { }
+    constructor(public http: HttpClient, private ngFireStore: AngularFirestore) { }
     
     getAllProducts() {
-        return this.fireStore.collection('products').snapshotChanges()
+        return this.ngFireStore.collection('products').snapshotChanges()
             .pipe(
                 map(action => action
                     .map(a => {
@@ -25,7 +25,7 @@ export class ProductService {
     }
     addProduct(product: any) {
         
-        return this.fireStore.collection('products').add({
+        return this.ngFireStore.collection('products').add({
             name: product.name,
             price: product.price,
             color: product.color,
@@ -34,7 +34,7 @@ export class ProductService {
         });
     }
     updateProduct(product: any) {
-        return this.fireStore.collection('products').doc(product.id).set({
+        return this.ngFireStore.collection('products').doc(product.id).set({
             name: product.name,
             price: product.price,
             color: product.color,
@@ -42,7 +42,7 @@ export class ProductService {
         });
     }
     deleteProduct(id:string){
-        return this.fireStore.collection('products').doc(id).delete();
+        return this.ngFireStore.collection('products').doc(id).delete();
     }
 } 
 

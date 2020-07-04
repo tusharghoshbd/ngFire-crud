@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <button  type="button"  (click)="signout()" class="btn btn-danger" style="margin-left: 10px">Sign out</button>
+            {{ authService.userData ? authService.userData.email : ""}}
         </div>
     </div>
     

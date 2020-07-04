@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { ProductService } from '../core/app.service';
+import { ProductService } from '../core/product.service';
 import { AuthService } from '../core/auth.service';
 
 @Component({
@@ -16,8 +16,8 @@ export class DashboardComponent implements OnInit {
     product: any={ id: 0, name: "", price: "", color: "", size: "" };
     editFlag=false;
     constructor(
-        private productService: ProductService,
-        private authService:AuthService) { }
+        public productService: ProductService,
+        public authService:AuthService) { }
 
     ngOnInit() {
         this.getProducts();
