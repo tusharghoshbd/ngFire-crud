@@ -7,6 +7,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule, BUCKET  } from '@angular/fire/storage';
 
 import { environment } from '../environments/environment';
 import { routing } from './app.routing';
@@ -39,7 +40,8 @@ import { VarifyEmailComponent } from './auth/varify-email/varify-email.component
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
         AngularFireDatabaseModule,
-        AngularFireAuthModule
+        AngularFireAuthModule,
+        AngularFireStorageModule
     ],
     providers: [ProductService, AuthService, AuthGuardService],
     bootstrap: [AppComponent]

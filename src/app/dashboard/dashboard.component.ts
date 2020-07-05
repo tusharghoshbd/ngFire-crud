@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ProductService } from '../core/product.service';
 import { AuthService } from '../core/auth.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
     selector: 'app-dashboard',
@@ -17,7 +18,8 @@ export class DashboardComponent implements OnInit {
     editFlag=false;
     constructor(
         public productService: ProductService,
-        public authService:AuthService) { }
+        public authService: AuthService,
+        public ngFireStorage: AngularFireStorage) { }
 
     ngOnInit() {
         this.getProducts();
@@ -72,6 +74,14 @@ export class DashboardComponent implements OnInit {
     signout() { 
         this.authService.signOut();
     }
+
+    uploadFile(event) {
+        const file=event.target.files[0];
+        // const randomId = Math.random().toString(36).substring(2);
+        const filePath = 'productImage/test';
+        const ref = this.ngFireStorage.ref(filePath);
+        const task = ref.put(file);
+      }
 
     private getProducts() {
         this.sub=this.productService.getAllProducts().subscribe((data: any) => {
