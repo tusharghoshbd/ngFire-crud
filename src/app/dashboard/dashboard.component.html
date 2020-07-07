@@ -34,6 +34,11 @@
                         <option value="Large">LARGE</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="file">File:</label>
+                    <input type="file"  (change)="uploadFile($event)" accept=".png,.jpg" />
+                </div>
+                
                 <button   type="submit" *ngIf="editFlag == false" class="btn btn-primary">Add Product</button>
                 <button  type="submit" *ngIf="editFlag == true" class="btn btn-primary">Update Product</button>
                 <button  type="button"  (click)="resetForm()" class="btn btn-danger" style="margin-left: 10px">Reset</button>
@@ -67,6 +72,5 @@
         </div>
     </div>
 
-    <label for="file">File:</label>
-    <input type="file" (change)="uploadFile($event)" accept=".png,.jpg" />
+    
 </div>

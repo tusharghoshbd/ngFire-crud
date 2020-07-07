@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ProductService } from '../core/product.service';
 import { AuthService } from '../core/auth.service';
-import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
     selector: 'app-dashboard',
@@ -14,20 +13,20 @@ export class DashboardComponent implements OnInit {
     title='CRUD operation using firebase';
     sub: Subscription;
     products: any=[];
-    product: any={ id: 0, name: "", price: "", color: "", size: "" };
+    product: any={ id: 0, name: "", price: "", color: "", size: "", file:"" };
     editFlag=false;
     constructor(
         public productService: ProductService,
-        public authService: AuthService,
-        public ngFireStorage: AngularFireStorage) { }
+        public authService: AuthService) { }
 
     ngOnInit() {
         this.getProducts();
     }
     onAddProductSubmit() {
         if (this.editFlag==false) {
+            console.log(this.product);
             this.productService.addProduct(this.product).then((data: any) => {
-
+                console.log("compo ts ", data);
                 if (data.id!=null) {
                     this.getProducts();
                     this.resetForm();
@@ -63,7 +62,7 @@ export class DashboardComponent implements OnInit {
     }
 
     resetForm() {
-        this.product={ id: 0, name: "", price: "", color: "", size: "" };
+        this.product={ id: 0, name: "", price: "", color: "", size: "", file:""  };
         this.editFlag=false;
     }
 
@@ -76,12 +75,12 @@ export class DashboardComponent implements OnInit {
     }
 
     uploadFile(event) {
-        const file=event.target.files[0];
-        // const randomId = Math.random().toString(36).substring(2);
-        const filePath = 'productImage/test';
-        const ref = this.ngFireStorage.ref(filePath);
-        const task = ref.put(file);
-      }
+        this.product.file=event.target.files[0];
+        // // const randomId = Math.random().toString(36).substring(2);
+        // const filePath = 'productImage/test';
+        // const ref = this.ngFireStorage.ref(filePath);
+        // const task = ref.put(file);
+    }
 
     private getProducts() {
         this.sub=this.productService.getAllProducts().subscribe((data: any) => {
