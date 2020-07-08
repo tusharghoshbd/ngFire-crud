@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ProductService } from '../core/product.service';
 import { AuthService } from '../core/auth.service';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Component({
     selector: 'app-dashboard',
@@ -15,9 +16,12 @@ export class DashboardComponent implements OnInit {
     products: any=[];
     product: any={ id: 0, name: "", price: "", color: "", size: "", file:"" };
     editFlag=false;
+    msgHelloworld:any="";
     constructor(
         public productService: ProductService,
-        public authService: AuthService) { }
+        public authService: AuthService,
+        public ngFireFunction: AngularFireFunctions
+    ) { }
 
     ngOnInit() {
         this.getProducts();
@@ -80,6 +84,12 @@ export class DashboardComponent implements OnInit {
         // const filePath = 'productImage/test';
         // const ref = this.ngFireStorage.ref(filePath);
         // const task = ref.put(file);
+    }
+    onClickFunHelloworld() { 
+        this.ngFireFunction.httpsCallable('helloWorld')({}).subscribe(async (res: any) => {
+            this.msgHelloworld=res;
+            console.log("this.msgHelloworld", this.msgHelloworld);
+       });;
     }
 
     private getProducts() {

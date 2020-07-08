@@ -43,6 +43,10 @@
                 <button  type="submit" *ngIf="editFlag == true" class="btn btn-primary">Update Product</button>
                 <button  type="button"  (click)="resetForm()" class="btn btn-danger" style="margin-left: 10px">Reset</button>
                 
+                <hr/>
+                <button type="button" (click)="onClickFunHelloworld()" class="btn btn-success" >Call helloworld function</button>
+                <br/>
+                <span>{{msgHelloworld}}</span>
               </form>
         </div>
         <div class="col-md-8"> 
